@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "packTitle": "Вилки",
+  "packDescription": "Двойной удар (вилка) - нападение одной фигурой на две",
+  "packDifficulty": "Средняя",
+  "puzzles": [
+    {
+      "id": "fork-1",
+      "type": "best-move",
+      "validation": "strict",
+      "title": "Коневая вилка",
+      "fen": "2q1k3/8/8/8/2N5/8/8/4K3 w - - 0 1",
+      "solution": ["c4d6"],
+      "description": "Конь может одновременно атаковать короля и ферзя!"
+    },
+    {
+      "id": "fork-2",
+      "type": "best-move",
+      "validation": "strict",
+      "title": "Пешечная вилка",
+      "fen": "8/8/3r1k2/8/4PK2/8/8/8 w - - 0 1",
+      "solution": ["e4e5"],
+      "description": "Пешка наносит двойной удар на короля и ладью под защитой короля."
+    },
+    {
+      "id": "fork-3",
+      "type": "best-move",
+      "validation": "strict",
+      "title": "Слоновая вилка",
+      "fen": "8/1r6/4k3/8/8/8/K5B1/8 w - - 0 1",
+      "solution": ["g2d5"],
+      "description": "Слон делает вилку на короля и ладью, пока наш король в безопасности."
+    }
+  ]
+}

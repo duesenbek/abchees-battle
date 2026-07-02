@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/icon.png" />
+    <link rel="apple-touch-icon" href="/icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta name="theme-color" content="#0A0A0F" />
+    <meta name="description" content="ABCHESS Battle - Multiplayer chess puzzle battle" />
+    <meta property="og:title" content="ABCHESS Battle" />
+    <meta property="og:description" content="Multiplayer chess puzzle battle" />
+    <meta property="og:image" content="/og-image.jpg" />
+    <title>ABCHESS Battle</title>
+    <!-- Preload core assets -->
+    <link rel="preload" as="image" href="/avatars/1.webp" />
+    <link rel="preload" as="image" href="/avatars/2.webp" />
+    <link rel="preload" as="image" href="/avatars/3.webp" />
+    <link rel="preload" as="image" href="/avatars/4.webp" />
+    <link rel="preload" as="image" href="/images/clock-perspective.webp" />
+    <link rel="preload" as="image" href="/images/trophy-perspective.webp" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div
+      id="splash-screen"
+      style="
+        position: fixed;
+        inset: 0;
+        background: #0F1117;
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: opacity 0.5s ease;
+        pointer-events: none;
+      "
+    >
+      <img
+        src="/icon.png"
+        alt="Logo"
+        style="width: 120px; height: 120px; animation: splashFadeIn 2s ease-out forwards"
+      />
+      <div
+        style="
+          margin-top: 24px;
+          font-family: 'Inter', sans-serif;
+          color: white;
+          font-weight: bold;
+          font-size: 24px;
+          letter-spacing: 2px;
+          animation: splashFadeIn 2s ease-out forwards;
+        "
+      >
+        ABCHESS BATTLE
+      </div>
+      <style>
+        @keyframes splashFadeIn {
+          0% {
+            opacity: 0;
+            transform: scale(0.9);
+          }
+          100% {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+      </style>
+    </div>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      window.addEventListener('load', () => {
+        const splash = document.getElementById('splash-screen');
+        if (splash) {
+          // Give it a short moment after load before fading out (matches 2s animation roughly)
+          setTimeout(() => {
+            splash.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+            splash.style.opacity = '0';
+            splash.style.transform = 'scale(1.05)';
+            setTimeout(() => splash.remove(), 800);
+          }, 1500);
+        }
+      });
+    </script>
+  </body>
+</html>

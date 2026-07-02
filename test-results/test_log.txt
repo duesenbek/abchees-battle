@@ -1,0 +1,46 @@
+================== ABCHESS E2E PROOF ==================
+1. Запуск приложения
+[Screenshot saved]: test-results/1_setup_screen.png
+
+2. Старт турнира
+[Screenshot saved]: test-results/2_boards_rendered.png
+
+3. Анализ позиции до первого хода
+Текущий FEN (chess.js): r1bqkb1r/pppp1ppp/2n2n2/4p2Q/2B1P3/8/PPPP1PPP/RNB1K1NR w KQkq - 4 4
+Ожидаемый FEN (JSON):   r1bqkb1r/pppp1ppp/2n2n2/4p2Q/2B1P3/8/PPPP1PPP/RNB1K1NR w KQkq - 4 4
+=> FEN ПОЛНОСТЬЮ СОВПАДАЮТ
+
+4. Неправильный ход
+Попытка хода: a7 -> a6
+[Screenshot saved]: test-results/3_after_illegal_move.png
+FEN после неверного хода: r1bqkb1r/pppp1ppp/2n2n2/4p2Q/2B1P3/8/PPPP1PPP/RNB1K1NR w KQkq - 4 4
+=> ДОКАЗАНО: FEN не изменился, фигура возвращена на место
+
+5. Правильный ход
+Делаем правильный ход: h5 -> f7
+[Screenshot saved]: test-results/4_after_correct_move.png
+FEN после правильного хода: r1bqkb1r/pppp1Qpp/2n2n2/4p3/2B1P3/8/PPPP1PPP/RNB1K1NR b KQkq - 0 4
+Счет: 1
+Индекс текущей задачи: 0
+
+6. Автоматический переход
+Ожидаем 1000мс...
+[Screenshot saved]: test-results/5_after_auto_transition.png
+Новый FEN (Загруженная позиция): 6k1/5ppp/8/8/8/8/8/4R1K1 w - - 0 1
+Ожидаемый FEN следующей задачи:  6k1/5ppp/8/8/8/8/8/4R1K1 w - - 0 1
+=> ПОДТВЕРЖДЕНО: FEN совпадает со следующей задачей.
+
+7. Завершение турнира
+Проходим остальные задачи для Игрока А...
+Решаем задачу 2: e1 -> e8
+Решаем задачу 3: c7 -> c8
+Решаем задачу 4: b6 -> b8
+Решаем задачу 5: b2 -> b1
+Решаем задачу 6: e4 -> a4
+Решаем задачу 7: c3 -> a3
+Решаем задачу 8: f3 -> h3
+[Screenshot saved]: test-results/6_podium_screen.png
+Победитель (ID зоны): zone-a
+Итоговый счет Игрока А: 8
+
+[УСПЕШНО] Все этапы проверки пройдены.

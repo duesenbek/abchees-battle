@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "packTitle": "Мат в 2 хода",
+  "packDescription": "Классические маты в 2 хода",
+  "packDifficulty": "Средняя",
+  "puzzles": [
+    {
+      "id": "mate2-1",
+      "type": "mate-in-2",
+      "validation": "exact-moves",
+      "title": "Спертый мат",
+      "fen": "3qr2k/pbpp2pp/1p5N/3Q2b1/2P1P3/P7/1PP2PPP/R4RK1 w - - 0 1",
+      "solution": ["d5g8", "e8g8", "h6f7"],
+      "description": "Жертва ферзя ради красивого мата конем."
+    },
+    {
+      "id": "mate2-2",
+      "type": "mate-in-2",
+      "validation": "exact-moves",
+      "title": "Слабость 8-й горизонтали",
+      "fen": "6k1/5ppp/8/8/8/2r5/5PPP/1R4K1 w - - 0 1",
+      "solution": ["b1b8", "c3c8", "b8c8"],
+      "description": "Используйте ладью для мата по последней линии."
+    },
+    {
+      "id": "mate2-3",
+      "type": "mate-in-2",
+      "validation": "exact-moves",
+      "title": "Отрезание короля",
+      "fen": "8/8/8/8/7k/5K2/6Q1/8 w - - 0 1",
+      "solution": ["g2g6", "h4h3", "g6h5"],
+      "description": "Отрежьте королю пути к отступлению."
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "packTitle": "Эндшпиль",
+  "packDescription": "Финальная стадия игры, где важен каждый темп",
+  "packDifficulty": "Сложная",
+  "puzzles": [
+    {
+      "id": "end-1",
+      "type": "best-move",
+      "validation": "strict",
+      "title": "Превращение пешки",
+      "fen": "8/6P1/8/8/8/8/K6k/8 w - - 0 1",
+      "solution": ["g7g8q"],
+      "description": "Проведи пешку и преврати её в ферзя!"
+    },
+    {
+      "id": "end-2",
+      "type": "best-move",
+      "validation": "strict",
+      "title": "Правило квадрата",
+      "fen": "k7/8/3K4/7p/8/8/8/8 w - - 0 1",
+      "solution": ["d6e5"],
+      "description": "Король должен сделать единственный точный ход по диагонали, чтобы успеть в квадрат пешки."
+    }
+  ]
+}
