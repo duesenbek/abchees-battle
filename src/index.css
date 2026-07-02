@@ -227,9 +227,10 @@ html, body, #root {
 
 .board-sizer {
   width: 100%;
-  min-width: 560px;
-  max-width: 620px;
-  aspect-ratio: 1 / 1;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
   margin: 0 auto; /* Center horizontally */
 }
