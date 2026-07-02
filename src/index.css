@@ -369,3 +369,33 @@ html, body, #root {
   border-bottom: 1px solid var(--border);
   font-size: 15px;
 }
+
+/* ===== Laptop Scaling ===== */
+@media (max-width: 1400px) {
+  /* Typography */
+  .t-h1 { font-size: 22px; }
+  .t-h2 { font-size: 18px; }
+  .t-h3 { font-size: 14px; }
+  .t-section { font-size: 15px; }
+  .t-body { font-size: 13px; }
+  .t-caption { font-size: 11px; }
+  .t-value { font-size: 13px; }
+
+  /* Layout */
+  .app-header { height: 56px; min-height: 56px; padding: 0 24px; }
+  .header-brand { font-size: 16px; }
+  .header-timer { font-size: 20px; }
+  .setup-sidebar { width: 220px; }
+  .setup-content { padding: 32px 40px; }
+  .game-area { padding: 16px; gap: 16px; }
+  .game-grid { gap: 16px; }
+  
+  /* Components */
+  .player-block { padding: 8px 12px; }
+  .player-avatar { width: 40px; height: 40px; }
+  .dataset-card { padding: 12px; }
+  .btn-primary, .btn-secondary, .input-field { height: 36px; font-size: 13px; padding: 0 12px; }
+  
+  /* Specific Board Adjustments */
+  .board-block { padding: 8px; }
+}
