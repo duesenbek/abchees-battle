@@ -370,31 +370,31 @@ html, body, #root {
   font-size: 15px;
 }
 
-/* ===== Laptop Scaling ===== */
-@media (max-width: 1400px) {
+/* ===== Laptop Scaling (Aggressive for 1366x768) ===== */
+@media (max-width: 1400px), (max-height: 800px) {
   /* Typography */
-  .t-h1 { font-size: 22px; }
-  .t-h2 { font-size: 18px; }
-  .t-h3 { font-size: 14px; }
-  .t-section { font-size: 15px; }
-  .t-body { font-size: 13px; }
+  .t-h1 { font-size: 20px; }
+  .t-h2 { font-size: 16px; }
+  .t-h3 { font-size: 13px; }
+  .t-section { font-size: 14px; }
+  .t-body { font-size: 12px; }
   .t-caption { font-size: 11px; }
-  .t-value { font-size: 13px; }
+  .t-value { font-size: 12px; }
 
   /* Layout */
-  .app-header { height: 56px; min-height: 56px; padding: 0 24px; }
-  .header-brand { font-size: 16px; }
-  .header-timer { font-size: 20px; }
+  .app-header { height: 50px; min-height: 50px; padding: 0 20px; }
+  .header-brand { font-size: 15px; }
+  .header-timer { font-size: 18px; }
   .setup-sidebar { width: 220px; }
-  .setup-content { padding: 32px 40px; }
-  .game-area { padding: 16px; gap: 16px; }
-  .game-grid { gap: 16px; }
+  .setup-content { padding: 24px; }
+  .game-area { padding: 12px; gap: 12px; }
+  .game-grid { gap: 12px; }
   
   /* Components */
-  .player-block { padding: 8px 12px; }
-  .player-avatar { width: 40px; height: 40px; }
+  .player-block { padding: 6px 12px; }
+  .player-avatar { width: 36px; height: 36px; }
   .dataset-card { padding: 12px; }
-  .btn-primary, .btn-secondary, .input-field { height: 36px; font-size: 13px; padding: 0 12px; }
+  .btn-primary, .btn-secondary, .input-field { height: 34px; font-size: 12px; padding: 0 12px; }
   
   /* Specific Board Adjustments */
   .board-block { padding: 8px; }
