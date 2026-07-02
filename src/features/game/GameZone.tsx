@@ -25,7 +25,7 @@ const AVATARS: Record<string, string> = {
   'zone-d': '/avatars/4.png',
 };
 
-export const GameZone = memo(({ zoneId, side }: GameZoneProps) => {
+export const GameZone = memo(({ zoneId }: GameZoneProps) => {
   // ── Read from GameEngine (single source of truth) ──────────────────────────
   const zone            = useGameStore((s) => s.zones[zoneId]);
   const isGameActive    = useGameStore((s) => s.status === 'active');

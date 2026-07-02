@@ -11,6 +11,7 @@ import discoveredPuzzlesRaw from '../../data/puzzles/discovered.json';
 import endgamesPuzzlesRaw from '../../data/puzzles/endgames.json';
 import { type PuzzleFile } from '../../core/chess/types';
 import { UploadCloud, FileJson, Copy, CheckCircle2 } from 'lucide-react';
+import { Chessboard } from 'react-chessboard';
 
 const defaultPuzzles = (defaultPuzzlesRaw as unknown as PuzzleFile).puzzles;
 const mate2Puzzles = (mate2PuzzlesRaw as unknown as PuzzleFile).puzzles;
@@ -78,7 +79,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
     showMoveHints, setShowMoveHints,
     showSolutionHints, setShowSolutionHints,
     maxSolutionHintsPerPuzzle, setMaxSolutionHintsPerPuzzle,
-    maxAttemptsPerPuzzle, setMaxAttemptsPerPuzzle,
+    maxAttemptsPerPuzzle, setMaxAttemptsPerPuzzle, customPuzzles
   } = useGameStore();
   const [localTime, setLocalTime] = useState(defaultTimeLimit);
 
@@ -194,7 +195,22 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
           </button>
         </div>
 
-        <div style={{ padding: 24, borderTop: '1px solid var(--border)' }}>
+        <div style={{ padding: 24, borderTop: '1px solid var(--border)', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <a 
+            href="https://t.me/duesenbek" 
+            target="_blank" 
+            rel="noreferrer"
+            style={{ 
+              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', 
+              color: '#3390ec', textDecoration: 'none', fontSize: '14px', fontWeight: 500,
+              padding: '8px', borderRadius: '8px', background: 'rgba(51, 144, 236, 0.1)'
+            }}
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M22 2L11 13M22 2L15 22L11 13M11 13L2 9L22 2"/>
+            </svg>
+            Связаться с разработчиком (@duesenbek)
+          </a>
           <button onClick={onStart} disabled={isStarting} className="btn-primary" style={{ width: '100%' }}>
             {isStarting ? 'Запуск...' : 'Начать турнир'}
           </button>
@@ -747,6 +763,47 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
                 </div>
               </Modal>
 
+            </div>
+          </div>
+        )}
+
+        {activeTab === 'preview' && (
+          <div style={{ maxWidth: 800 }}>
+            <h1 className="t-h1" style={{ marginBottom: 32 }}>Предпросмотр задач</h1>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+              {(customPuzzles || defaultPuzzles).map((puzzle, index) => (
+                <div key={puzzle.id} style={{ background: 'var(--surface)', padding: '24px', borderRadius: '12px', border: '1px solid var(--border)' }}>
+                  <h3 className="t-h3" style={{ marginBottom: 8 }}>{index + 1}. {puzzle.title}</h3>
+                  <div className="t-body" style={{ color: 'var(--text-secondary)', marginBottom: 16 }}>{puzzle.description}</div>
+                  
+                  <div style={{ display: 'flex', gap: '24px', alignItems: 'flex-start' }}>
+                    <div style={{ width: '240px', flexShrink: 0, borderRadius: '4px', overflow: 'hidden', border: '1px solid var(--border)' }}>
+                      <Chessboard 
+                        options={{
+                          position: puzzle.fen,
+                          boardStyle: { width: 240, height: 240 },
+                          allowDragging: false,
+                          boardOrientation: puzzle.fen.split(' ')[1] === 'b' ? 'black' : 'white'
+                        }}
+                      />
+                    </div>
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <div className="t-caption" style={{ color: 'var(--text-secondary)' }}>FEN позиция:</div>
+                      <code style={{ display: 'block', padding: '12px', background: 'rgba(0,0,0,0.2)', borderRadius: '6px', fontSize: '12px', wordBreak: 'break-all', marginBottom: '16px', border: '1px solid rgba(255,255,255,0.05)', color: 'var(--text-primary)' }}>
+                        {puzzle.fen}
+                      </code>
+                      <div className="t-caption" style={{ color: 'var(--text-secondary)' }}>Победная серия ходов:</div>
+                      <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginTop: '8px' }}>
+                        {puzzle.solution.map((move, i) => (
+                          <span key={i} style={{ padding: '6px 10px', background: 'var(--accent)', color: 'white', borderRadius: '6px', fontSize: '13px', fontWeight: 600, letterSpacing: '0.05em' }}>
+                            {move}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         )}

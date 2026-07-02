@@ -1,6 +1,6 @@
-import type { Puzzle } from '../types';
+import type { Puzzle } from '../chess/types';
 import defaultPuzzlesRaw from '../../data/puzzles/mate1.json';
-import { type PuzzleFile } from '../types';
+import { type PuzzleFile } from '../chess/types';
 
 export class PuzzleApiService {
   public async fetchDailyPuzzles(): Promise<Puzzle[]> {
