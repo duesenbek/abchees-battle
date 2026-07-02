@@ -68,9 +68,11 @@ export const GameZone = memo(({ zoneId }: GameZoneProps) => {
   useEffect(() => {
     if (!sizerRef.current) return;
     const observer = new ResizeObserver((entries) => {
-      if (entries[0]) {
-        const { width, height } = entries[0].contentRect;
-        setBoardWidth(Math.min(width, height));
+      for (const entry of entries) {
+        const { width, height } = entry.contentRect;
+        // The board-block has padding inside its content rect? No, contentRect excludes padding.
+        // Cap max size to 640px so it doesn't get ridiculously large on huge monitors
+        setBoardWidth(Math.floor(Math.min(width, height, 640)));
       }
     });
     observer.observe(sizerRef.current);
@@ -292,13 +294,14 @@ export const GameZone = memo(({ zoneId }: GameZoneProps) => {
       </div>
 
       {/* ── BOARD BLOCK ── */}
-      <div className="board-block">
+      <div className="board-block" ref={sizerRef}>
         <div
-          ref={sizerRef}
           className={`board-sizer${shaking ? ' board-shake' : ''}`}
           style={{
             border: `2px solid ${boardBorderColor}`,
             transition: 'border-color 0.2s ease',
+            width: boardWidth > 0 ? boardWidth : '100%',
+            height: boardWidth > 0 ? boardWidth : '100%',
           }}
         >
           {boardWidth > 0 && (
